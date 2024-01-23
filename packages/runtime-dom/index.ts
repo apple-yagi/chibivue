@@ -3,9 +3,10 @@ import {
   createAppAPI,
   createRenderer,
 } from "../runtime-core";
+import { patchProp } from "./patchProp";
 import { nodeOps } from "./nodeOps";
 
-const { render } = createRenderer(nodeOps);
+const { render } = createRenderer({ ...nodeOps, patchProp });
 const _createApp = createAppAPI(render);
 
 export const createApp = ((...args) => {
